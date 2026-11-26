@@ -61,3 +61,19 @@ jobs:
 
       - name: Test
         run: npm run test:frontend
+
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
